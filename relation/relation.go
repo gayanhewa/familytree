@@ -9,7 +9,7 @@ import (
 
 // Relationship interface defines the contract for getting a relationship for a given person.
 type Relationship interface {
-	GetRelationship(tree familytree.Tree, name string) ([]*person.Person, error)
+	GetRelationship(tree familytree.Tree, name string) ([]person.Person, error)
 }
 
 // NewRelationFactory get the corect relation to resolve.

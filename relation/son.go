@@ -9,7 +9,7 @@ import (
 type Son struct{}
 
 // GetRelationship will return the relation Person or if not available an error.
-func (m *Son) GetRelationship(tree familytree.Tree, name string) (people []*person.Person, err error) {
+func (m *Son) GetRelationship(tree familytree.Tree, name string) (people []person.Person, err error) {
 	person, err := tree.GetPerson(name)
 	if err != nil {
 		return nil, err

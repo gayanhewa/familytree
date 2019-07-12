@@ -8,20 +8,20 @@ import (
 
 // Tree interface defines the contract for a family tree implementation.
 type Tree interface {
-	Add(*person.Person) error
-	GetPerson(string) (*person.Person, error)
-	GetPeople() map[string]*person.Person
-	AddChild(motherName string, childsName string, gender string) error
+	Add(person.Person) error
+	GetPerson(string) (person.Person, error)
+	GetPeople() map[string]person.Person
+	AddChild(string, string, string) error
 }
 
 // FamilyTree holds the family tree structure for an in-memor implementation.
 type FamilyTree struct {
-	root   *person.Person
-	people map[string]*person.Person
+	root   person.Person
+	people map[string]person.Person
 }
 
 // Add handles adding new people to the family tree.
-func (t FamilyTree) Add(p *person.Person) error {
+func (t FamilyTree) Add(p person.Person) error {
 	// The Person already exists in the tree, name has to be unique so we can identify them easily.
 	if _, pre := t.people[p.Name()]; pre == true {
 		return errors.New("the name is already taken, use a unique name")
@@ -31,7 +31,7 @@ func (t FamilyTree) Add(p *person.Person) error {
 }
 
 // GetPerson lets you fetch a pointer to a person struct by the name in the hashmap.
-func (t FamilyTree) GetPerson(name string) (*person.Person, error) {
+func (t FamilyTree) GetPerson(name string) (person.Person, error) {
 	person, pre := t.people[name]
 	if pre == true {
 		return person, nil
@@ -40,7 +40,7 @@ func (t FamilyTree) GetPerson(name string) (*person.Person, error) {
 }
 
 // GetPeople returns a map of people in the tree.
-func (t FamilyTree) GetPeople() map[string]*person.Person {
+func (t FamilyTree) GetPeople() map[string]person.Person {
 	return t.people
 }
 
@@ -77,7 +77,7 @@ func (t FamilyTree) AddChild(mothersName string, childsName string, childsGender
 // NewFamilyTree will initialize the family tree into structure. TODO : Refactor
 func NewFamilyTree() Tree {
 	return &FamilyTree{
-		people: map[string]*person.Person{},
+		people: map[string]person.Person{},
 	}
 }
 

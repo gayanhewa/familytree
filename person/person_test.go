@@ -2,22 +2,22 @@ package person
 
 import "testing"
 
-type person struct {
+type personStub struct {
 	name   string
 	gender string
 }
 
 var tests = []struct {
 	description string
-	given       person
+	given       personStub
 }{
 	{
 		"random person male",
-		person{"random", "male"},
+		personStub{"random", "male"},
 	},
 	{
 		"random person female",
-		person{"random female", "female"},
+		personStub{"random female", "female"},
 	},
 }
 
