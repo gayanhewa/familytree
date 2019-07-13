@@ -16,7 +16,6 @@ func (m *Mother) GetRelationship(tree familytree.Tree, name string) (people []pe
 	}
 	if person.Mother() != nil {
 		people = append(people, person.Mother())
-		return people, nil
 	}
 	return
 }

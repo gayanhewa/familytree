@@ -1,6 +1,9 @@
 package relation
 
 import (
+	"reflect"
+	"testing"
+
 	"github.com/gayanhewa/family-tree/person"
 	familytree "github.com/gayanhewa/family-tree/tree"
 )
@@ -57,4 +60,33 @@ func testData() familytree.Tree {
 	tree.Add(grandchild1)
 	tree.Add(grandchild2)
 	return tree
+}
+
+func TestRelationFactory(t *testing.T) {
+	tests := []struct {
+		name       string
+		structType Relationship
+	}{
+		{"mother", &Mother{}},
+		{"father", &Father{}},
+		{"paternal-uncle", &PaternalUncle{}},
+		{"paternal-aunt", &PaternalAunt{}},
+		{"maternal-uncle", &MaternalUncle{}},
+		{"maternal-aunt", &MaternalAunt{}},
+		{"sister-in-law", &SisterInLaw{}},
+		{"brother-in-law", &BrotherInLaw{}},
+		{"son", &Son{}},
+		{"daughter", &Daughter{}},
+		{"siblings", &Sibling{}},
+	}
+	for _, test := range tests {
+		relation := NewRelationFactory(test.name)
+		if reflect.TypeOf(relation) != reflect.TypeOf(test.structType) {
+			t.Fatalf("failed asserting that %v is the same type of %v", reflect.TypeOf(relation), reflect.TypeOf(test.structType))
+		}
+	}
+	if NewRelationFactory("non-existing name") != nil {
+		t.Fatal("failed to assert that invalid type returns nil")
+	}
+
 }
