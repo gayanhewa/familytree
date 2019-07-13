@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/gayanhewa/family-tree/handler"
@@ -15,6 +16,12 @@ func main() {
 		fmt.Println("please specify input file name")
 		return
 	}
+	// read the input file
+	file, err := os.Open(args[0])
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
 	// initialize the family tree
 	tree, err := familytree.SeedFamilyTree(familytree.NewFamilyTree())
 	if err != nil {
@@ -22,7 +29,7 @@ func main() {
 		return
 	}
 	var output []string
-	for _, input := range handler.ProcessInput(args[0]) {
+	for _, input := range handler.ProcessInput(file) {
 		switch input[0] {
 		case "ADD_CHILD":
 			output = append(output, handler.AddChildHandler(tree, input[1], input[2], input[3])...)
