@@ -29,7 +29,12 @@ func main() {
 		return
 	}
 	var output []string
-	for _, input := range handler.ProcessInput(file) {
+	processedInputs, err := handler.ProcessInput(file)
+	if err != nil {
+		fmt.Println("unable to process the input file")
+		return
+	}
+	for _, input := range processedInputs {
 		switch input[0] {
 		case "ADD_CHILD":
 			output = append(output, handler.AddChildHandler(tree, input[1], input[2], input[3])...)

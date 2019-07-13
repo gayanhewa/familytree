@@ -101,7 +101,7 @@ func (p *person) Children() []Person {
 func (p *person) Siblings() (siblings []Person) {
 	if p.Mother() != nil {
 		for _, child := range p.Mother().Children() {
-			if child == p {
+			if child.Name() == p.Name() {
 				continue
 			}
 			siblings = append(siblings, child)
