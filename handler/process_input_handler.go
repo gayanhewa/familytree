@@ -2,27 +2,22 @@ package handler
 
 import (
 	"bufio"
-	"log"
-	"os"
+	"errors"
+	"io"
 	"strings"
 )
 
 // ProcessInput Process the input file into a slice.
-func ProcessInput(filename string) (input [][]string) {
-	file, err := os.Open(filename)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-	scanner := bufio.NewScanner(file)
+func ProcessInput(handler io.Reader) ([][]string, error) {
+	scanner := bufio.NewScanner(handler)
 	scanner.Split(bufio.ScanLines)
-
+	var input [][]string
 	for scanner.Scan() {
-		if err := scanner.Err(); err != nil {
-			log.Fatal(err)
-		}
 		line := scanner.Text()
 		input = append(input, strings.Split(line, " "))
 	}
-	return
+	if err := scanner.Err(); err != nil {
+		return nil, errors.New("unable to read the input")
+	}
+	return input, nil
 }
