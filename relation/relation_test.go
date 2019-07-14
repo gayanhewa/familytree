@@ -22,7 +22,8 @@ func testData() familytree.Tree {
 	child3Spouse := person.NewPerson("Child3Spouse", "Male")
 	child4 := person.NewPerson("Child4", "Male")
 	child4Spouse := person.NewPerson("Child4Spouse", "Female")
-
+	child5 := person.NewPerson("Child5", "Male")
+	child6 := person.NewPerson("Child6", "Female")
 	father.SetSpouse(mother)
 	mother.SetSpouse(father)
 	child1.SetMother(mother)
@@ -45,7 +46,10 @@ func testData() familytree.Tree {
 	child4.SetFather(father)
 	child4.SetSpouse(child4Spouse)
 	child4Spouse.SetSpouse(child4)
-
+	child5.SetFather(father)
+	child6.SetFather(father)
+	child5.SetMother(mother)
+	child6.SetMother(mother)
 	// Add everyone to the tree
 	tree.Add(father)
 	tree.Add(mother)
@@ -53,6 +57,8 @@ func testData() familytree.Tree {
 	tree.Add(child2)
 	tree.Add(child3)
 	tree.Add(child4)
+	tree.Add(child5)
+	tree.Add(child6)
 	tree.Add(child1Spouse)
 	tree.Add(child2Spouse)
 	tree.Add(child3Spouse)

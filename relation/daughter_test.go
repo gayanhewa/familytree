@@ -10,14 +10,17 @@ func TestGetRelationshipForDaughter(t *testing.T) {
 		if err != nil {
 			t.Fatalf("failed to assert the relationship, %s", err.Error())
 		}
-		if len(people) != 2 {
-			t.Fatal("failed asserting that Mother has 2 daughters.")
+		if len(people) != 3 {
+			t.Fatal("failed asserting that Mother has 3 daughters.")
 		}
-		if people[0].Name() != "Child2" && people[1].Name() != "Child2" {
+		if people[0].Name() != "Child2" && people[1].Name() != "Child2" && people[2].Name() != "Child2" {
 			t.Fatal("failed asserting the daugher's name is Child2")
 		}
-		if people[0].Name() != "Child3" && people[1].Name() != "Child3" {
+		if people[0].Name() != "Child3" && people[1].Name() != "Child3" && people[2].Name() != "Child3" {
 			t.Fatal("failed asserting the daugher's name is Child3")
+		}
+		if people[0].Name() != "Child6" && people[1].Name() != "Child6" && people[2].Name() != "Child6" {
+			t.Fatal("failed asserting the daugher's name is Child6")
 		}
 	})
 	t.Run("test when the person does not exist", func(t *testing.T) {

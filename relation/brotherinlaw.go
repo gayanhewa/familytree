@@ -21,5 +21,14 @@ func (m *BrotherInLaw) GetRelationship(tree familytree.Tree, name string) (peopl
 			people = append(people, sibling.Spouse())
 		}
 	}
+	if !person.HasSpouse() {
+		return people, nil
+	}
+	// Spouses siblings are also of concern.
+	for _, sibling := range person.Spouse().Siblings() {
+		if sibling.Gender() == "male" {
+			people = append(people, sibling)
+		}
+	}
 	return
 }

@@ -22,14 +22,17 @@ func TestRelationshipWithMaternalUncles(t *testing.T) {
 		if err != nil {
 			t.Fatalf("failed to assert the relationship, %s", err.Error())
 		}
-		if len(people) != 2 {
-			t.Fatal("failed asserting that child1 has 2 maternal uncle's")
+		if len(people) != 3 {
+			t.Fatal("failed asserting that child1 has 3 maternal uncle's")
 		}
-		if people[0].Name() != "Child1" && people[1].Name() != "Child1" {
+		if people[0].Name() != "Child1" && people[1].Name() != "Child1" && people[2].Name() != "Child1" {
 			t.Fatal("failed asserting the maternal uncles name is Child1")
 		}
-		if people[0].Name() != "Child4" && people[1].Name() != "Child4" {
+		if people[0].Name() != "Child4" && people[1].Name() != "Child4" && people[2].Name() != "Child4" {
 			t.Fatal("failed asserting the maternal uncles name is Child4")
+		}
+		if people[0].Name() != "Child5" && people[1].Name() != "Child5" && people[2].Name() != "Child5" {
+			t.Fatal("failed asserting the maternal uncles name is Child5")
 		}
 	})
 	t.Run("test when the person does not exist", func(t *testing.T) {

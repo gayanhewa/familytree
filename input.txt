@@ -1,11 +1,6 @@
-ADD_CHILD Ginerva Gayan Male
-GET_RELATIONSHIP Remus Siblings
-GET_RELATIONSHIP Remus Maternal-Aunt
-GET_RELATIONSHIP Remus Maternal-Uncle
-GET_RELATIONSHIP William Maternal-Uncle
-GET_RELATIONSHIP William Maternal-Aunt
-GET_RELATIONSHIP William Paternal-Aunt
-GET_RELATIONSHIP William Paternal-Uncle
-GET_RELATIONSHIP James Siblings
-GET_RELATIONSHIP James Sister-in-law
-GET_RELATIONSHIP James Brother-in-law
+ADD_CHILD Ginerva John Male
+GET_RELATIONSHIP Ginny Paternal-Uncle
+GET_RELATIONSHIP Darcy Brother-In-Law
+GET_RELATIONSHIP Darcy Sister-In-Law
+GET_RELATIONSHIP Charlie Son
+GET_RELATIONSHIP Daniel Daughter
