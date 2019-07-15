@@ -1,0 +1,12 @@
+James
+Ginerva
+Charlie Bill Percy Ronald
+NONE
+Albus
+Lily
+NONE
+PERSON_NOT_FOUND
+Charlie Bill Percy Ronald
+NONE
+CHILD_ADDED
+CHILD_ADDITION_FAILED

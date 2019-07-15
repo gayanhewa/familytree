@@ -1,6 +1,7 @@
 package relation
 
 import (
+	"errors"
 	"strings"
 
 	"github.com/gayanhewa/family-tree/person"
@@ -13,31 +14,31 @@ type Relationship interface {
 }
 
 // NewRelationFactory get the corect relation to resolve.
-func NewRelationFactory(name string) Relationship {
+func NewRelationFactory(name string) (Relationship, error) {
 	name = strings.ToLower(strings.TrimSpace(name))
 	switch name {
 	case "mother":
-		return &Mother{}
+		return &Mother{}, nil
 	case "father":
-		return &Father{}
+		return &Father{}, nil
 	case "paternal-uncle":
-		return &PaternalUncle{}
+		return &PaternalUncle{}, nil
 	case "paternal-aunt":
-		return &PaternalAunt{}
+		return &PaternalAunt{}, nil
 	case "maternal-uncle":
-		return &MaternalUncle{}
+		return &MaternalUncle{}, nil
 	case "maternal-aunt":
-		return &MaternalAunt{}
+		return &MaternalAunt{}, nil
 	case "sister-in-law":
-		return &SisterInLaw{}
+		return &SisterInLaw{}, nil
 	case "brother-in-law":
-		return &BrotherInLaw{}
+		return &BrotherInLaw{}, nil
 	case "son":
-		return &Son{}
+		return &Son{}, nil
 	case "daughter":
-		return &Daughter{}
+		return &Daughter{}, nil
 	case "siblings":
-		return &Sibling{}
+		return &Sibling{}, nil
 	}
-	return nil
+	return nil, errors.New("NONE")
 }

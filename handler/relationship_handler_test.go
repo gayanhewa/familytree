@@ -22,4 +22,9 @@ func TestRelationshipHandler(t *testing.T) {
 	if output[0] != "PERSON_NOT_FOUND" {
 		t.Fatalf("failed to assert PERSON_NOT_FOUND")
 	}
+
+	output = RelationshipHandler(tree, "Child4", "bogus-relation")
+	if output[0] != "NONE" {
+		t.Fatalf("failed to assert NONE")
+	}
 }

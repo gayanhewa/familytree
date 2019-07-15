@@ -1,6 +1,13 @@
-ADD_CHILD Ginerva John Male
 GET_RELATIONSHIP Ginny Paternal-Uncle
+GET_RELATIONSHIP Dominique Paternal-Aunt
+GET_RELATIONSHIP Albus Maternal-Uncle
+GET_RELATIONSHIP Albus Maternal-Aunt
 GET_RELATIONSHIP Darcy Brother-In-Law
 GET_RELATIONSHIP Darcy Sister-In-Law
 GET_RELATIONSHIP Charlie Son
 GET_RELATIONSHIP Daniel Daughter
+GET_RELATIONSHIP Ginerva Siblings
+GET_RELATIONSHIP Ginerva YOLO
+ADD_CHILD Ginerva John Male
+ADD_CHILD Ted Bella Female
+

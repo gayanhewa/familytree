@@ -86,13 +86,12 @@ func TestRelationFactory(t *testing.T) {
 		{"siblings", &Sibling{}},
 	}
 	for _, test := range tests {
-		relation := NewRelationFactory(test.name)
+		relation, _ := NewRelationFactory(test.name)
 		if reflect.TypeOf(relation) != reflect.TypeOf(test.structType) {
 			t.Fatalf("failed asserting that %v is the same type of %v", reflect.TypeOf(relation), reflect.TypeOf(test.structType))
 		}
 	}
-	if NewRelationFactory("non-existing name") != nil {
-		t.Fatal("failed to assert that invalid type returns nil")
+	if _, err := NewRelationFactory("non-existing name"); err == nil {
+		t.Fatal("failed to assert that invalid type returns error")
 	}
-
 }

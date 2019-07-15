@@ -9,7 +9,11 @@ import (
 
 // RelationshipHandler resolve relationships.
 func RelationshipHandler(familyTree familytree.Tree, name string, relationship string) (output []string) {
-	relation := relation.NewRelationFactory(relationship)
+	relation, err := relation.NewRelationFactory(relationship)
+	if err != nil {
+		output = append(output, err.Error())
+		return output
+	}
 	relations, err := relation.GetRelationship(familyTree, name)
 	if err != nil {
 		output = append(output, err.Error())

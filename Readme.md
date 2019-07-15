@@ -1,11 +1,12 @@
 # Familytree Problem
-
-The code challenge was taken up with the following assumptions.
+Solution for the problem Family tree from https://www.geektrust.in/coding-problem/backend/family
 
 ## Assumptions
-    - The initial input data for the tree ( diagram - https://www.geektrust.in/api/pdf/open/PS1Evaluate)
+    - The initial input data for the tree (diagram - https://www.geektrust.in/api/pdf/open/PS1Evaluate)
     - Every person is expected to have a unique name.
     - The input will only accept a single input file and the output is printed to sdtout
+    - There was a discripency between the PDF and the sample output in github https://github.com/geektrust/coding-problem-artefacts/blob/master/sample-io/Set1-Family-BD-IO-PS1/output1.txt , decided to stick to the format the PDF has provided for successful child additions "CHILD_ADDED"
+    - For cases where the input has relationships that are not recognized ie. "GET_RELATIONSHIP Ginerva YOLO" the output would be NONE
 
 ## Makefile
     - The make file has a few helper commands that can be used instead of the command in the build/run and tests step.
@@ -28,6 +29,7 @@ test-coverage:
 ## Building and running the code
     - The make file included in the file allows you to build the code for the current env.
     - Make sure to be in the GOPATH
+    - go version 1.12.6
 
 ```
     go build -o bin/ft
